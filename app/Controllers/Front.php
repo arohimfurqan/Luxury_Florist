@@ -198,11 +198,11 @@ class Front extends BaseController
 
       ];
       $carikeprolama = $this->Model_keranjang_produk->where(['keranjang_id' => $carikeranjanglama->id_keranjang, 'produk_id' => $id])->first();
-      if ($carikeprolama) {
-        $this->Model_keranjang_produk->update($carikeprolama->produk_keranjang_id, ['jumlah' => $jumlah + $carikeprolama->jumlah]);
-      } else {
-        $this->Model_keranjang_produk->save($keranjang_produk);
-      }
+      // if ($carikeprolama) {
+      //   $this->Model_keranjang_produk->update($carikeprolama->produk_keranjang_id, ['jumlah' => $jumlah + $carikeprolama->jumlah]);
+      // } else {
+      $this->Model_keranjang_produk->save($keranjang_produk);
+      // }
 
       echo ("<script>
         window.alert('Berhasil menambahkan ke keranjang');
