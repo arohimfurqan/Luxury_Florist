@@ -70,18 +70,18 @@
                           <?php
                           if ($row->jumlah > 1) {
                           ?>
-                            <!-- <button class="btn btn-xs btn-light-success btn-icon mr-2" onClick="decrement_quantity(<?= $row->produk_keranjang_id; ?>)">
+                            <button class="btn btn-xs btn-light-success btn-icon mr-2" onClick="decrement_quantity(<?= $row->produk_keranjang_id; ?>)">
                               <i class="ki ki-minus icon-xs"></i>
-                            </button> -->
+                            </button>
                           <?php } ?>
                           <input type="hidden" name="quant" id="input-quantity-<?= $row->produk_keranjang_id ?>" value="<?= $row->jumlah ?>">
                           <span class="mr-2 font-weight-bolder"><?= $row->jumlah ?></span>
                           <?php
                           if ($row->qty > $row->jumlah) {
                           ?>
-                            <!-- <button class="btn btn-xs btn-light-success btn-icon" onClick="increment_quantity(<?= $row->produk_keranjang_id; ?>)">
+                            <button class="btn btn-xs btn-light-success btn-icon" onClick="increment_quantity(<?= $row->produk_keranjang_id; ?>)">
                               <i class="ki ki-plus icon-xs"></i>
-                            </button> -->
+                            </button>
                           <?php } ?>
                         </td>
                         <td class="text-right align-middle font-weight-bolder font-size-h5">Rp. <?= number_format($row->harga) ?></td>

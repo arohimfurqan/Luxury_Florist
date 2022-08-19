@@ -18,6 +18,9 @@
                       <div class="card ">
 
                         <?php
+
+                        $db = Config\database::connect();
+
                         if ($produk->foto_produk) { ?>
 
                           <div class="demo">
@@ -81,7 +84,10 @@
                         <div class="col-6 col-md-4">
                           <div class="mb-8 d-flex flex-column">
                             <span class="text-dark font-weight-bold mb-4">Sold Items</span>
-                            <span class="text-muted font-weight-bolder font-size-lg">-</span>
+                            <?php
+                            $sold = $db->table('keranjang_produk')->join('keranjang', 'keranjang_id=id_keranjang')->where('produk_id', $produk->id_produk)->where('status', 'Pengiriman')->countAllResults();
+                            ?>
+                            <span class="text-muted font-weight-bolder font-size-lg"><?= $sold ?></span>
                           </div>
                         </div>
                         <div class="col-6 col-md-4">
@@ -137,7 +143,10 @@
                               </div>
                               <div class="col-md-4 col-lg-6">
                                 <div class="form-group">
+                                  <label for="">Jumlah</label>
+
                                   <div class="input-group mb-3">
+
                                     <input type="number" class="form-control" name="qty" min="1" max="<?= $produk->qty ?>" value="1">
                                     <div class="input-group-append">
                                       <button type="submit" class="btn btn-primary font-weight-bolder mr-6 px-6 font-size-sm">

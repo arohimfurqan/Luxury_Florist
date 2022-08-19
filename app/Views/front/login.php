@@ -7,7 +7,7 @@
         <div class="login-wrapper">
           <!--begin:Aside Content-->
           <div class="text-dark-75">
-            <a href="#">
+            <a href="<?= BASE ?>/front">
               <img src="<?= BASE  ?>/front_assets/custom/apps/ecommerce/img/logo2.png" class="max-h-150px" alt="" />
             </a>
             <h3 class="mb-8 mt-22 font-weight-bold">LUXURY FLORIST</h3>

@@ -28,25 +28,11 @@ CREATE TABLE `biodata` (
   `provinsi_id` int(11) DEFAULT NULL,
   `kota_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_biodata`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `biodata` */
 
-insert  into `biodata`(`id_biodata`,`user_id`,`alamat`,`no_hp`,`provinsi_id`,`kota_id`) values (8,5,'cengkeh','79875687',13,1303),(9,11,'padang','968767',13,1371),(10,12,NULL,NULL,NULL,NULL);
-
-/*Table structure for table `brand` */
-
-DROP TABLE IF EXISTS `brand`;
-
-CREATE TABLE `brand` (
-  `id_brand` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_brand` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_brand`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `brand` */
-
-insert  into `brand`(`id_brand`,`nama_brand`) values (3,'papan karangan bunga'),(4,'buket bunga'),(5,'papan karangan bunga bulat'),(6,'papan karangan bunga persegi');
+insert  into `biodata`(`id_biodata`,`user_id`,`alamat`,`no_hp`,`provinsi_id`,`kota_id`) values (8,5,'cengkeh','79875687',13,1303),(9,11,'padang','968767',13,1371),(10,12,NULL,NULL,NULL,NULL),(11,13,'cengkeh','09876545',13,1371),(12,14,NULL,NULL,NULL,NULL),(13,15,NULL,NULL,NULL,NULL),(14,16,NULL,NULL,NULL,NULL),(15,17,'padang','078786756',13,1371);
 
 /*Table structure for table `foto_lain_produk` */
 
@@ -85,20 +71,20 @@ CREATE TABLE `keranjang` (
   `id_keranjang` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `tanggal_pesan` varchar(50) DEFAULT NULL,
-  `tanggal_pengiriman` varchar(50) DEFAULT NULL,
-  `tanggal_terima` varchar(50) DEFAULT NULL,
-  `tanggal_pembayaran` varchar(50) DEFAULT NULL,
+  `tanggal_pesan` varchar(30) DEFAULT NULL,
+  `tanggal_pengiriman` varchar(30) DEFAULT NULL,
+  `tanggal_terima` varchar(30) DEFAULT NULL,
+  `tanggal_pembayaran` varchar(30) DEFAULT NULL,
   `bukti_pembayaran` text DEFAULT NULL,
   `lama_penyewaan` int(11) DEFAULT NULL,
-  `tanggal_penyewaan` varchar(50) DEFAULT NULL,
+  `tanggal_penyewaan` varchar(30) DEFAULT NULL,
   `pengembalian` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id_keranjang`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `keranjang` */
 
-insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_terima`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`) values (27,11,'Dikembalikan','2022-08-09 06:39:00','2022-08-09 06:42:47',NULL,'2022-08-09 06:42:13','1660045333WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-09','2022-08-09 06:43:27'),(28,11,'Pengiriman','2022-08-09 08:03:13','2022-08-09 08:04:41',NULL,'2022-08-09 08:04:18','1660050258WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-10',NULL),(29,11,'Lunas','2022-08-09 08:42:20',NULL,NULL,'2022-08-09 08:42:41','1660052561WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25',NULL),(30,12,'Keranjang',NULL,NULL,NULL,NULL,NULL,2,'2022-08-13',NULL);
+insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_terima`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`) values (27,11,'Dikembalikan','2022-08-09 06:39:00','2022-08-09 06:42:47',NULL,'2022-08-09 06:42:13','1660045333WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-09','2022-08-09 06:43:27'),(28,11,'Pengiriman','2022-08-09 08:03:13','2022-08-09 08:04:41',NULL,'2022-08-09 08:04:18','1660050258WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-10',NULL),(29,11,'Pengiriman','2022-08-09 08:42:20','2022-08-18 05:41:21',NULL,'2022-08-09 08:42:41','1660052561WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25',NULL),(30,12,'Keranjang',NULL,NULL,NULL,NULL,NULL,2,'2022-08-13',NULL),(31,13,'Pengiriman','2022-08-18 02:22:19','2022-08-18 02:23:49',NULL,'2022-08-18 02:22:50','1660807370WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-19',NULL),(32,17,'Pengiriman','2022-08-18 04:36:26','2022-08-18 04:39:37',NULL,'2022-08-18 04:37:50','1660815470WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-19',NULL),(33,17,'Pengiriman','2022-08-18 05:39:46','2022-08-18 05:41:45',NULL,'2022-08-18 05:40:04','1660819204WhatsApp Image 2022-07-23 at 12.51.40 (1).jpeg',1,'2022-08-18',NULL),(34,17,'Pengiriman','2022-08-18 08:42:29','2022-08-18 08:43:23',NULL,'2022-08-18 08:42:44','1660830164db.jpeg',1,'2022-08-18',NULL);
 
 /*Table structure for table `keranjang_produk` */
 
@@ -112,11 +98,11 @@ CREATE TABLE `keranjang_produk` (
   `harga_keranjang` int(11) NOT NULL,
   `keterangan` text DEFAULT NULL,
   PRIMARY KEY (`produk_keranjang_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `keranjang_produk` */
 
-insert  into `keranjang_produk`(`produk_keranjang_id`,`keranjang_id`,`produk_id`,`jumlah`,`harga_keranjang`,`keterangan`) values (34,27,25,1,200000,'hhhh'),(35,28,25,1,200000,'selamat hari guru\r\ndari siswa'),(36,29,28,1,200000,'kompre'),(37,30,28,1,200000,'abv'),(40,30,27,1,200000,'eeee'),(41,30,27,1,200000,'wwew');
+insert  into `keranjang_produk`(`produk_keranjang_id`,`keranjang_id`,`produk_id`,`jumlah`,`harga_keranjang`,`keterangan`) values (34,27,25,1,200000,'hhhh'),(35,28,25,1,200000,'selamat hari guru\r\ndari siswa'),(36,29,28,1,200000,'kompre'),(37,30,28,1,200000,'abv'),(40,30,27,1,200000,'eeee'),(41,30,27,1,200000,'wwew'),(43,31,28,1,200000,'happy birdhay niken\r\ndari sahabat anita sovia'),(44,32,24,1,170000,'niken dan ijep\r\ndari sahabat anita'),(45,32,25,2,200000,'ucapan  selamat 17 agustus 1945'),(46,33,24,1,170000,'jjj'),(48,34,28,1,200000,'fff');
 
 /*Table structure for table `produk` */
 
@@ -127,21 +113,18 @@ CREATE TABLE `produk` (
   `nama_produk` varchar(255) NOT NULL,
   `deskripsi` text DEFAULT NULL,
   `qty` int(11) DEFAULT NULL,
-  `brand_id` int(11) DEFAULT NULL,
   `kategori_id` int(11) NOT NULL,
   `harga` double NOT NULL,
   `foto_produk` text NOT NULL,
   `status_produk` varchar(20) NOT NULL,
   PRIMARY KEY (`id_produk`),
   KEY `FK_produk` (`kategori_id`),
-  KEY `FK_produk2` (`brand_id`),
-  CONSTRAINT `FK_produk` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_produk2` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id_brand`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_produk` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `produk` */
 
-insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`brand_id`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (24,'papan karangan bunga','<p>untuk wedding</p>',2,NULL,10,170000,'1658828202WhatsApp Image 2022-07-23 at 12.56.39.jpeg','Aktif'),(25,'papan karangan bunga','ucapan selamat pt pertamina',2,NULL,10,200000,'1658889388WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(26,'buket bunga','<p>buket bunga graduation</p>',4,NULL,9,100000,'1659190849WhatsApp Image 2022-07-23 at 18.21.24 (1).jpeg','Aktif'),(27,'karngan bunga dekorasi','<p>karangan bunga berduka cita</p>',4,NULL,7,200000,'1659191114WhatsApp Image 2022-07-23 at 18.21.25 (1).jpeg','Aktif'),(28,'papan karangan bunga','<p>selamat sempro</p>',4,NULL,10,200000,'1660052444WhatsApp Image 2022-07-23 at 12.51.40.jpeg','Aktif');
+insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (24,'papan karangan bunga','<p>untuk wedding</p>',2,10,170000,'1658828202WhatsApp Image 2022-07-23 at 12.56.39.jpeg','Aktif'),(25,'papan karangan bunga','ucapan selamat pt pertamina',2,10,200000,'1658889388WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(26,'buket bunga','<p>buket bunga graduation</p>',4,9,100000,'1659190849WhatsApp Image 2022-07-23 at 18.21.24 (1).jpeg','Aktif'),(27,'karngan bunga dekorasi','<p>karangan bunga berduka cita</p>',4,7,200000,'1659191114WhatsApp Image 2022-07-23 at 18.21.25 (1).jpeg','Aktif'),(28,'papan karangan bunga','<p>selamat sempro</p>',4,10,200000,'1660052444WhatsApp Image 2022-07-23 at 12.51.40.jpeg','Aktif');
 
 /*Table structure for table `tb_kota_kabupaten` */
 
@@ -180,18 +163,18 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `role` varchar(25) NOT NULL,
   `foto_profile` text DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id_user`,`username`,`nama`,`password`,`email`,`role`,`foto_profile`) values (1,'admin','Admin','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','rohim98@gmail.com','admin',NULL),(2,'rohim@gmail.com','arohim furqan','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','rohim@gmail.com','Customer',NULL),(3,'lovela97famazera@gmail.com','lovela','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','lovela97famazera@gmail.com','Customer',NULL),(5,'anita@gmail.com','anita','$2y$10$CEIpAZKtDcZD4wvkyLAj../Uuu.hxBFDNcO0EkuBNZEU619DC6EY.','anita@gmail.com','Customer',NULL),(7,'pimpinan','Pimpinan','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','pimpinan@gmail.com','pimpinan',NULL),(11,'him1@gmail.com','him','$2y$10$Cw.JWKxqivNL75zX.hLnjOPPkdwg/jdMsQdiRQ51FonojN0Z6gA9i','him1@gmail.com','Customer',NULL),(12,'aoim@gmail.com','aoim','$2y$10$I5rTnXr.zMUK1WgC0ey8GO2I9/aAOSW0qhQfAHLrSHZPFNZrQ7hG.','aoim@gmail.com','Customer',NULL);
+insert  into `users`(`id_user`,`username`,`nama`,`password`,`email`,`role`,`foto_profile`) values (1,'admin','Admin','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','rohim98@gmail.com','admin',NULL),(2,'rohim@gmail.com','arohim furqan','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','rohim@gmail.com','Customer',NULL),(3,'lovela97famazera@gmail.com','lovela','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','lovela97famazera@gmail.com','Customer',NULL),(5,'anita@gmail.com','anita','$2y$10$CEIpAZKtDcZD4wvkyLAj../Uuu.hxBFDNcO0EkuBNZEU619DC6EY.','anita@gmail.com','Customer',NULL),(7,'pimpinan','Pimpinan','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','pimpinan@gmail.com','pimpinan',NULL),(11,'him1@gmail.com','him','$2y$10$Cw.JWKxqivNL75zX.hLnjOPPkdwg/jdMsQdiRQ51FonojN0Z6gA9i','him1@gmail.com','Customer',NULL),(12,'aoim@gmail.com','aoim','$2y$10$I5rTnXr.zMUK1WgC0ey8GO2I9/aAOSW0qhQfAHLrSHZPFNZrQ7hG.','aoim@gmail.com','Customer',NULL),(13,'aca@gmail.com','aca','$2y$10$SydNTMB2OQB4g0t4izzXgO/ck85uVoWnxiSaOjx5P3R1EzCozG4p.','aca@gmail.com','Customer',NULL),(14,'dona@gmail.com','dona','$2y$10$a1XJDjca/rdzahCex8spQ.UDYfuR5nwaHsgwepmJ14FzpE36oREaS','dona@gmail.com','Customer',NULL),(15,'fit@gmail.com','fit','$2y$10$vXBaszwyYkDh5Dba1ZnYNOzhLkTDf0WtXpY0ME3lLsUI/pXvIzEBS','fit@gmail.com','Customer',NULL),(16,'via@gmail.com','via','$2y$10$XqjVocUWz1WcuKaBdgLp2Ofjn7ZVk766R5iXthGkufzsaLsx7IjIS','via@gmail.com','Customer',NULL),(17,'nanda@gmail.com','nanda','$2y$10$UsX5usuiKVlPoQLg5InRMuAlzNqXdvdsHGtN0KlN6rSy67B.j0eMK','nanda@gmail.com','Customer',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
