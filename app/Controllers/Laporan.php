@@ -52,7 +52,7 @@ class Laporan extends BaseController
 
 
     $data = [
-      'produk' =>  $this->Model_produk->join('brand', 'id_brand=brand_id')->join('kategori', 'id_kategori=kategori_id')->findAll()
+      'produk' =>  $this->Model_produk->join('kategori', 'id_kategori=kategori_id')->findAll()
     ];
 
 
@@ -85,7 +85,7 @@ class Laporan extends BaseController
 
 
     $data = [
-      'produk' =>  $this->Model_produk->join('brand', 'id_brand=brand_id')->join('kategori', 'id_kategori=kategori_id')->findAll()
+      'produk' =>  $this->Model_produk->join('kategori', 'id_kategori=kategori_id')->findAll()
     ];
 
 
@@ -352,7 +352,7 @@ class Laporan extends BaseController
 
 
     $data = [
-      'produk' =>  $this->Model_produk->join('brand', 'id_brand=brand_id')->join('kategori', 'id_kategori=kategori_id')->findAll()
+      'produk' =>  $this->Model_produk->join('kategori', 'id_kategori=kategori_id')->findAll()
     ];
 
 

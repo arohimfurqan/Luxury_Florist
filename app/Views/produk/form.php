@@ -55,11 +55,6 @@
                                         <option value="">--PILIH--</option>
                                         <?php
                                         $db = \Config\Database::connect();
-                                        $query = $db->query("SELECT * FROM brand")->getResult();
-                                        foreach ($query as $br) : ?>
-                                            <option value="<?= $br->id_brand ?>" <?= $model->brand_id == $br->id_brand ?  'selected' : '' ?>><?= $br->nama_brand ?></option>
-
-                                        <?php endforeach
                                         ?>
                                     </select>
                                 </div>
@@ -172,11 +167,7 @@
                                         <option value="">--PILIH--</option>
                                         <?php
                                         $db = \Config\Database::connect();
-                                        $query = $db->query("SELECT * FROM brand")->getResult();
-                                        foreach ($query as $br) : ?>
-                                            <option value="<?= $br->id_brand ?>"><?= $br->nama_brand ?></option>
 
-                                        <?php endforeach
                                         ?>
                                     </select>
                                 </div>

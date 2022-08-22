@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\M_biodata;
+use App\Models\M_kategori;
 use App\Models\M_keranjang;
 use App\Models\M_keranjang_produk;
 use App\Models\M_produk;
@@ -16,6 +17,7 @@ class Front extends BaseController
   protected $Model_keranjang;
   protected $Model_keranjang_produk;
   protected $Model_user;
+  protected $Model_kategori;
   protected $validation;
   protected $db;
 
@@ -25,6 +27,7 @@ class Front extends BaseController
     $this->Model_user = new M_user();
     $this->Model_biodata = new M_biodata();
     $this->Model_keranjang = new M_keranjang();
+    $this->Model_kategori = new M_kategori();
     $this->Model_keranjang_produk = new M_keranjang_produk();
     $this->validation =  \Config\Services::validation();
     $this->db = \Config\database::connect();
@@ -52,6 +55,24 @@ class Front extends BaseController
     $template = [
       // 'menu' => view('layout/front/menu'),
       'isi' => view('front/produk', $data)
+    ];
+
+    return view('layout/front/main', $template);
+  }
+
+
+  public function kategori($id)
+  {
+    $kt = $this->Model_kategori->where('id_kategori', $id)->first();
+    $data =
+      [
+        'produk' => $this->Model_produk->where('status_produk', 'Aktif')->where('kategori_id', $id)->orderBy('id_produk', 'DESC')->paginate(12, 'product'),
+        'pager' => $this->Model_produk->pager,
+        'kategori' => $kt
+      ];
+    $template = [
+      // 'menu' => view('layout/front/menu'),
+      'isi' => view('front/produk_kategori', $data)
     ];
 
     return view('layout/front/main', $template);
@@ -430,6 +451,20 @@ class Front extends BaseController
 
       // 'menu' => view('layout/front/menu'),
       'isi' => view('front/kirim', $data)
+    ];
+
+    return view('layout/front/main', $template);
+  }
+  public function dikembalikan()
+  {
+    $caripengiriman = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->where('user_id', session('id2'))->where('status', 'Dikembalikan')->groupBy('id_keranjang')->findAll();
+    // print_r($caripengiriman);
+    // die;
+    $data = ['data' => $caripengiriman];
+    $template = [
+
+      // 'menu' => view('layout/front/menu'),
+      'isi' => view('front/kembali', $data)
     ];
 
     return view('layout/front/main', $template);

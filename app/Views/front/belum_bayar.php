@@ -41,6 +41,7 @@
 																				<tr>
 																					<th>No</th>
 																					<th>Product</th>
+																					<th>Qty</th>
 																					<th>Tanggal Pemesanan</th>
 																					<th>Total Bayar</th>
 																					<th>Actions</th>
@@ -67,6 +68,7 @@
 																							<?php }
 																							?> <?= $row->nama_produk ?>
 																						</td>
+																						<td><?= $row->jumlah ?></td>
 																						<td><?= $row->tanggal_pesan ?></td>
 																						<td>Rp. <?= number_format($row->total) ?></td>
 																						<td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td>

@@ -80,11 +80,11 @@ CREATE TABLE `keranjang` (
   `tanggal_penyewaan` varchar(30) DEFAULT NULL,
   `pengembalian` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id_keranjang`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `keranjang` */
 
-insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_terima`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`) values (27,11,'Dikembalikan','2022-08-09 06:39:00','2022-08-09 06:42:47',NULL,'2022-08-09 06:42:13','1660045333WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-09','2022-08-09 06:43:27'),(28,11,'Pengiriman','2022-08-09 08:03:13','2022-08-09 08:04:41',NULL,'2022-08-09 08:04:18','1660050258WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-10',NULL),(29,11,'Pengiriman','2022-08-09 08:42:20','2022-08-18 05:41:21',NULL,'2022-08-09 08:42:41','1660052561WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25',NULL),(30,12,'Keranjang',NULL,NULL,NULL,NULL,NULL,2,'2022-08-13',NULL),(31,13,'Pengiriman','2022-08-18 02:22:19','2022-08-18 02:23:49',NULL,'2022-08-18 02:22:50','1660807370WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-19',NULL),(32,17,'Pengiriman','2022-08-18 04:36:26','2022-08-18 04:39:37',NULL,'2022-08-18 04:37:50','1660815470WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-19',NULL),(33,17,'Pengiriman','2022-08-18 05:39:46','2022-08-18 05:41:45',NULL,'2022-08-18 05:40:04','1660819204WhatsApp Image 2022-07-23 at 12.51.40 (1).jpeg',1,'2022-08-18',NULL),(34,17,'Pengiriman','2022-08-18 08:42:29','2022-08-18 08:43:23',NULL,'2022-08-18 08:42:44','1660830164db.jpeg',1,'2022-08-18',NULL);
+insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_terima`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`) values (27,11,'Dikembalikan','2022-08-09 06:39:00','2022-08-09 06:42:47',NULL,'2022-08-09 06:42:13','1660045333WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-09','2022-08-09 06:43:27'),(28,11,'Pengiriman','2022-08-09 08:03:13','2022-08-09 08:04:41',NULL,'2022-08-09 08:04:18','1660050258WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-10',NULL),(29,11,'Pengiriman','2022-08-09 08:42:20','2022-08-18 05:41:21',NULL,'2022-08-09 08:42:41','1660052561WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25',NULL),(30,12,'Keranjang',NULL,NULL,NULL,NULL,NULL,2,'2022-08-13',NULL),(31,13,'Pengiriman','2022-08-18 02:22:19','2022-08-18 02:23:49',NULL,'2022-08-18 02:22:50','1660807370WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-19',NULL),(32,17,'Dikembalikan','2022-08-18 04:36:26','2022-08-18 04:39:37',NULL,'2022-08-18 04:37:50','1660815470WhatsApp Image 2022-07-23 at 18.39.38.jpeg',1,'2022-08-19','2022-08-22 11:01:31'),(33,17,'Pengiriman','2022-08-18 05:39:46','2022-08-18 05:41:45',NULL,'2022-08-18 05:40:04','1660819204WhatsApp Image 2022-07-23 at 12.51.40 (1).jpeg',1,'2022-08-18',NULL),(34,17,'Pengiriman','2022-08-18 08:42:29','2022-08-18 08:43:23',NULL,'2022-08-18 08:42:44','1660830164db.jpeg',1,'2022-08-18',NULL),(35,2,'Keranjang',NULL,NULL,NULL,NULL,NULL,1,'2022-08-19',NULL),(36,17,'Lunas','2022-08-19 03:31:11',NULL,NULL,'2022-08-19 03:31:21','1660897881db.jpeg',1,'2022-08-19',NULL);
 
 /*Table structure for table `keranjang_produk` */
 
@@ -98,11 +98,11 @@ CREATE TABLE `keranjang_produk` (
   `harga_keranjang` int(11) NOT NULL,
   `keterangan` text DEFAULT NULL,
   PRIMARY KEY (`produk_keranjang_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `keranjang_produk` */
 
-insert  into `keranjang_produk`(`produk_keranjang_id`,`keranjang_id`,`produk_id`,`jumlah`,`harga_keranjang`,`keterangan`) values (34,27,25,1,200000,'hhhh'),(35,28,25,1,200000,'selamat hari guru\r\ndari siswa'),(36,29,28,1,200000,'kompre'),(37,30,28,1,200000,'abv'),(40,30,27,1,200000,'eeee'),(41,30,27,1,200000,'wwew'),(43,31,28,1,200000,'happy birdhay niken\r\ndari sahabat anita sovia'),(44,32,24,1,170000,'niken dan ijep\r\ndari sahabat anita'),(45,32,25,2,200000,'ucapan  selamat 17 agustus 1945'),(46,33,24,1,170000,'jjj'),(48,34,28,1,200000,'fff');
+insert  into `keranjang_produk`(`produk_keranjang_id`,`keranjang_id`,`produk_id`,`jumlah`,`harga_keranjang`,`keterangan`) values (34,27,25,1,200000,'hhhh'),(35,28,25,1,200000,'selamat hari guru\r\ndari siswa'),(36,29,28,1,200000,'kompre'),(37,30,28,1,200000,'abv'),(40,30,27,1,200000,'eeee'),(41,30,27,1,200000,'wwew'),(43,31,28,1,200000,'happy birdhay niken\r\ndari sahabat anita sovia'),(44,32,24,1,170000,'niken dan ijep\r\ndari sahabat anita'),(45,32,25,2,200000,'ucapan  selamat 17 agustus 1945'),(46,33,24,1,170000,'jjj'),(48,34,28,1,200000,'fff'),(49,35,28,1,200000,'eee'),(50,36,28,1,200000,'ee');
 
 /*Table structure for table `produk` */
 
@@ -124,7 +124,7 @@ CREATE TABLE `produk` (
 
 /*Data for the table `produk` */
 
-insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (24,'papan karangan bunga','<p>untuk wedding</p>',2,10,170000,'1658828202WhatsApp Image 2022-07-23 at 12.56.39.jpeg','Aktif'),(25,'papan karangan bunga','ucapan selamat pt pertamina',2,10,200000,'1658889388WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(26,'buket bunga','<p>buket bunga graduation</p>',4,9,100000,'1659190849WhatsApp Image 2022-07-23 at 18.21.24 (1).jpeg','Aktif'),(27,'karngan bunga dekorasi','<p>karangan bunga berduka cita</p>',4,7,200000,'1659191114WhatsApp Image 2022-07-23 at 18.21.25 (1).jpeg','Aktif'),(28,'papan karangan bunga','<p>selamat sempro</p>',4,10,200000,'1660052444WhatsApp Image 2022-07-23 at 12.51.40.jpeg','Aktif');
+insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (24,'papan karangan bunga','<p>untuk wedding</p>',2,10,170000,'1658828202WhatsApp Image 2022-07-23 at 12.56.39.jpeg','Aktif'),(25,'papan karangan bunga','ucapan selamat pt pertamina',2,10,200000,'1658889388WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(26,'buket bunga','<p>buket bunga graduation</p>',4,9,100000,'1659190849WhatsApp Image 2022-07-23 at 18.21.24 (1).jpeg','Tidak Aktif'),(27,'karngan bunga dekorasi','<p>karangan bunga berduka cita</p>',4,7,200000,'1659191114WhatsApp Image 2022-07-23 at 18.21.25 (1).jpeg','Aktif'),(28,'papan karangan bunga','<p>selamat sempro</p>',4,10,200000,'1660052444WhatsApp Image 2022-07-23 at 12.51.40.jpeg','Aktif');
 
 /*Table structure for table `tb_kota_kabupaten` */
 

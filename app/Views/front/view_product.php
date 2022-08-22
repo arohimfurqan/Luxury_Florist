@@ -85,9 +85,13 @@
                           <div class="mb-8 d-flex flex-column">
                             <span class="text-dark font-weight-bold mb-4">Sold Items</span>
                             <?php
-                            $sold = $db->table('keranjang_produk')->join('keranjang', 'keranjang_id=id_keranjang')->where('produk_id', $produk->id_produk)->where('status', 'Pengiriman')->countAllResults();
+                            $sold = $db->table('keranjang_produk')->join('keranjang', 'keranjang_id=id_keranjang')->where('produk_id', $produk->id_produk)->where('status', 'Pengiriman')->orWhere('status', 'Dikembalikan')->get()->getResult();
+                            $jm = 0;
+                            foreach ($sold as $s) {
+                              @$jm = @$jm + $s->jumlah;
+                            }
                             ?>
-                            <span class="text-muted font-weight-bolder font-size-lg"><?= $sold ?></span>
+                            <span class="text-muted font-weight-bolder font-size-lg"><?= @$jm ?></span>
                           </div>
                         </div>
                         <div class="col-6 col-md-4">
