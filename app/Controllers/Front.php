@@ -469,4 +469,28 @@ class Front extends BaseController
 
     return view('layout/front/main', $template);
   }
+
+  public function kontak_kami()
+  {
+
+    $template = [
+
+      // 'menu' => view('layout/front/menu'),
+      'isi' => view('front/kontak_kami')
+    ];
+
+    return view('layout/front/main', $template);
+  }
+
+  public function tentang_kami()
+  {
+
+    $template = [
+
+      // 'menu' => view('layout/front/menu'),
+      'isi' => view('front/tentang_kami')
+    ];
+
+    return view('layout/front/main', $template);
+  }
 }

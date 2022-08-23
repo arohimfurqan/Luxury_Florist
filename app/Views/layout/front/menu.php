@@ -42,7 +42,7 @@ $db = Config\database::connect();
 			</li>
 
 			<li class="menu-item menu-item-submenu menu-item-rel">
-				<a href="#" class="menu-link menu-toggle">
+				<a href="<?= BASE ?>/front/tentang_kami" class="menu-link ">
 					<span class="menu-text">Tentang Kami</span>
 					<i class="menu-arrow"></i>
 				</a>
@@ -50,7 +50,7 @@ $db = Config\database::connect();
 			</li>
 
 			<li class="menu-item menu-item-submenu menu-item-rel">
-				<a href="#" class="menu-link menu-toggle">
+				<a href="<?= BASE ?>/front/kontak_kami" class="menu-link ">
 					<span class="menu-text">Kontak Kami</span>
 					<i class="menu-arrow"></i>
 				</a>
