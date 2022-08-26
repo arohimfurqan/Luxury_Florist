@@ -109,6 +109,12 @@
                              </a>
                          </li>
                          <li class="nav-item">
+                             <a href="<?= BASE ?>/laporan/uangmasuk" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'uangmasuk'  ? 'active' : '' ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Uang Masuk</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
                              <a target="_blank" href="<?= BASE ?>/laporan/costumer" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'costumer'  ? 'active' : '' ?>">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Costumer</p>
@@ -153,6 +159,12 @@
                              <a href="<?= BASE ?>/laporan/pengembalian" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'pengembalian'  ? 'active' : '' ?>">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Pengembalian</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= BASE ?>/laporan/uangmasuk" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'uangmasuk'  ? 'active' : '' ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Uang Masuk</p>
                              </a>
                          </li>
                          <li class="nav-item">

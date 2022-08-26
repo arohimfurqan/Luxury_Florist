@@ -493,4 +493,23 @@ class Front extends BaseController
 
     return view('layout/front/main', $template);
   }
+
+  public function profil()
+  {
+    $cariuserbio = $this->Model_user->join('biodata', 'user_id=id_user')->where('id_user', session('id2'))->first();
+
+    if ($cariuserbio->provinsi_id == NULL || $cariuserbio->kota_id == NULL || $cariuserbio->kota_id == '' || $cariuserbio->provinsi_id == '' || $cariuserbio->kota_id == 0 || $cariuserbio->provinsi_id == 0) {
+      $cariuserbio2 = $this->Model_user->join('biodata', 'user_id=id_user')->where('id_user', session('id2'))->first();
+    } else {
+      $cariuserbio2 = $this->Model_user->select('biodata.*,users.*,tb_provinsi.nama as nama_provinsi,tb_kota_kabupaten.nama as nama_kota,tb_provinsi.id as id_provinsi,tb_kota_kabupaten.id as id_kota')->join('biodata', 'user_id=id_user')->join('tb_provinsi', 'provinsi_id=tb_provinsi.id')->join('tb_kota_kabupaten', 'kota_id=tb_kota_kabupaten.id')->where('id_user', session('id2'))->first();
+    }
+    $data = ['biodata' => $cariuserbio2];
+    $template = [
+
+      // 'menu' => view('layout/front/menu'),
+      'isi' => view('front/profile', $data)
+    ];
+
+    return view('layout/front/main', $template);
+  }
 }

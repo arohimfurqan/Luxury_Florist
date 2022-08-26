@@ -80,6 +80,47 @@ class Laporan extends BaseController
     return view('layout/main', $template);
   }
 
+
+  public function order_periode()
+  {
+
+
+
+
+
+    if ($this->request->getMethod() === 'post') {
+      $tanggal1 =  $this->request->getPost('awal');
+      $tanggalawal = date("Y-m-d", strtotime($tanggal1));
+      $tanggal2 =  $this->request->getPost('akhir');
+      $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
+
+      $cart = $this->Model_keranjang->where('tanggal_pesan >=', $tanggalawal . ' 00:00:00')->where('tanggal_pesan <=', $tanggalakhir . ' 00:00:00')->where('status', 'Lunas')->findall();
+
+
+      $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
+
+      return view('laporan/L_order_periode', $dt);
+    }
+  }
+
+  public function terkirim_periode()
+  {
+
+    if ($this->request->getMethod() === 'post') {
+      $tanggal1 =  $this->request->getPost('awal');
+      $tanggalawal = date("Y-m-d", strtotime($tanggal1));
+      $tanggal2 =  $this->request->getPost('akhir');
+      $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
+
+      $cart = $this->Model_keranjang->where('tanggal_pengiriman >=', $tanggalawal . ' 00:00:00')->where('tanggal_pengiriman <=', $tanggalakhir . ' 00:00:00')->where('status', 'Pengiriman')->findall();
+
+
+      $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
+
+      return view('laporan/L_terkirim_periode', $dt);
+    }
+  }
+
   public function terkirim()
   {
 
@@ -349,25 +390,15 @@ class Laporan extends BaseController
 
   public function pengembalian()
   {
-
-
     $data = [
       'produk' =>  $this->Model_produk->join('kategori', 'id_kategori=kategori_id')->findAll()
     ];
-
-
 
     if ($this->request->getMethod() === 'post') {
       $tahun =  $this->request->getPost('tahun');
 
       $cart = $this->Model_keranjang->like('pengembalian', $tahun)->where('status', 'Dikembalikan')->findall();
 
-      // print_r($cart);
-      // die;
-
-      // $cart2 = $this->Model_keranjang->where('id_keranjang', $id)->first();
-
-      // $cariuserbio2 = $this->Model_user->select('biodata.*,users.*,tb_provinsi.nama as nama_provinsi,tb_kota_kabupaten.nama as nama_kota,tb_provinsi.id as id_provinsi,tb_kota_kabupaten.id as id_kota,users.nama as nama_user')->join('biodata', 'user_id=id_user')->join('tb_provinsi', 'provinsi_id=tb_provinsi.id')->join('tb_kota_kabupaten', 'kota_id=tb_kota_kabupaten.id')->where('id_user', $cart2->user_id)->first();
 
       $dt = ['cart' => $cart, 'tahun' => $tahun];
 
@@ -382,10 +413,69 @@ class Laporan extends BaseController
 
 
 
-  public function costumer()
+  public function pengembalian_periode()
   {
 
+    if ($this->request->getMethod() === 'post') {
+      $tanggal1 =  $this->request->getPost('awal');
+      $tanggalawal = date("Y-m-d", strtotime($tanggal1));
+      $tanggal2 =  $this->request->getPost('akhir');
+      $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
+      $cart = $this->Model_keranjang->where('pengembalian >=', $tanggalawal . ' 00:00:00')->where('pengembalian <=', $tanggalakhir . ' 00:00:00')->where('status', 'Dikembalikan')->findall();
+
+
+      $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
+
+      return view('laporan/L_pengembalian_periode', $dt);
+    }
+  }
+
+
+
+  public function costumer()
+  {
     return view('laporan/L_costumer');
+  }
+
+  public function uangmasuk()
+  {
+    $data = [
+      'produk' =>  $this->Model_produk->join('kategori', 'id_kategori=kategori_id')->findAll()
+    ];
+
+    if ($this->request->getMethod() === 'post') {
+      $tahun =  $this->request->getPost('tahun');
+
+      $cart = $this->Model_keranjang->like('tanggal_pembayaran', $tahun)->where('status', 'Dikembalikan')->orwhere('status', 'Lunas')->orwhere('status', 'Pengiriman')->findall();
+
+
+      $dt = ['cart' => $cart, 'tahun' => $tahun];
+
+      return view('laporan/L_uangmasuk', $dt);
+    }
+
+    $template = [
+      'isi' => view('laporan/F_uangmasuk', $data)
+    ];
+    return view('layout/main', $template);
+  }
+
+  public function uangmasuk_periode()
+  {
+
+    if ($this->request->getMethod() === 'post') {
+      $tanggal1 =  $this->request->getPost('awal');
+      $tanggalawal = date("Y-m-d", strtotime($tanggal1));
+      $tanggal2 =  $this->request->getPost('akhir');
+      $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
+
+      $cart = $this->Model_keranjang->where('tanggal_pembayaran >=', $tanggalawal . ' 00:00:00')->where('tanggal_pembayaran <=', $tanggalakhir . ' 00:00:00')->where('status', 'Dikembalikan')->orwhere('status', 'Lunas')->orwhere('status', 'Pengiriman')->findall();
+
+
+      $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
+
+      return view('laporan/L_uangmasuk_periode', $dt);
+    }
   }
 }

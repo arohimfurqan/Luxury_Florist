@@ -35,7 +35,7 @@ class Terkirim extends BaseController
 
   public function index()
   {
-    $cariorder = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->where('status', 'Pengiriman')->groupBy('id_keranjang')->findAll();
+    $cariorder = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*,users.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->join('users', 'user_id=id_user')->where('status', 'Pengiriman')->groupBy('id_keranjang')->findAll();
     // print_r($cariorder);
     // die;
     $data = ['data' => $cariorder];
@@ -80,7 +80,16 @@ class Terkirim extends BaseController
   public function pengembalian($id)
   {
     $this->Model_keranjang->update($id, ['status' => 'Dikembalikan', 'pengembalian' => date('Y-m-d h:i:s')]);
-
+    $cariproduk = $this->Model_keranjang_produk->where('keranjang_id', $id)->findAll();
+    if ($cariproduk) {
+      foreach ($cariproduk as $crp) {
+        $cariprodud = $this->Model_produk->where('id_produk', $crp->produk_id)->first();
+        if ($cariprodud) {
+          $qtybaru = $cariprodud->qty + $crp->jumlah;
+          $this->Model_produk->update($crp->produk_id, ['qty' => $qtybaru]);
+        }
+      }
+    }
     return  redirect()->back();
   }
 }

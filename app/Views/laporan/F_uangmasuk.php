@@ -2,14 +2,14 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Laporan Pengembalian</h3>
+        <h3 class="card-title">Laporan Uang Masuk</h3>
         <div class="card-tools">
           <!-- <a href="<?= BASE ?>/produk/" class="btn btn-warning">Back</a> -->
         </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <form action="<?= BASE ?>/laporan/pengembalian" method="POST" target="_blank">
+        <form action="<?= BASE ?>/laporan/uangmasuk" method="POST" target="_blank">
           <div class="box-body">
             <div class="row clearfix">
               <div class="col-md-6">
@@ -47,14 +47,14 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Laporan Pengembalian Periode</h3>
+        <h3 class="card-title">Laporan Order Periode</h3>
         <div class="card-tools">
           <!-- <a href="<?= BASE ?>/produk/" class="btn btn-warning">Back</a> -->
         </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <form action="<?= BASE ?>/laporan/pengembalian_periode" method="POST" target="_blank">
+        <form action="<?= BASE ?>/laporan/uangmasuk_periode" method="POST" target="_blank">
           <div class="box-body">
             <div class="row clearfix">
               <div class="col-md-6">
@@ -69,7 +69,6 @@
                   <input type="date" name="akhir" id="akhir" class="form-control">
                 </div>
               </div>
-
 
             </div>
           </div>

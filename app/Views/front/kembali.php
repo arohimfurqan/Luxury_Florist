@@ -46,6 +46,7 @@
                                   <th>Tanggal Pembayaran</th>
                                   <th>Tanggal Pengiriman</th>
                                   <th>Total Bayar</th>
+                                  <th>Status</th>
                                   <!-- <th>Actions</th> -->
                                 </tr>
                               </thead>
@@ -75,6 +76,8 @@
                                     <td class="pt-7 align-middle"><?= $row->tanggal_pembayaran ?></td>
                                     <td class="pt-7 align-middle"><?= $row->tanggal_pengiriman ?></td>
                                     <td class="pt-7 align-middle">Rp. <?= number_format($row->total) ?></td>
+                                    <td class="pt-7 align-middle"><?= $row->status ?></td>
+
                                     <!-- <td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td> -->
                                   </tr>
                                 <?php } ?>

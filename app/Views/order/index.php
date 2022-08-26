@@ -15,6 +15,7 @@
           <thead>
             <tr>
               <th>No</th>
+              <th>Nama Pemesan</th>
               <th>Product</th>
               <th>Tanggal Pemesanan</th>
               <th>Tanggal Pembayaran</th>
@@ -29,6 +30,7 @@
             ?>
               <tr>
                 <td><?= $no++ ?></td>
+                <td><?= $row->nama ?></td>
                 <td class="align-items-center">
                   <?php
                   if (!$row->foto_produk) { ?>
