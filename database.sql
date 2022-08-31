@@ -32,7 +32,7 @@ CREATE TABLE `biodata` (
 
 /*Data for the table `biodata` */
 
-insert  into `biodata`(`id_biodata`,`user_id`,`alamat`,`no_hp`,`provinsi_id`,`kota_id`) values (8,5,'cengkeh','79875687',13,1303),(9,11,'padang','968767',13,1371),(10,12,NULL,NULL,NULL,NULL),(11,13,'cengkeh','09876545',13,1371),(12,14,NULL,NULL,NULL,NULL),(13,15,NULL,NULL,NULL,NULL),(14,16,NULL,NULL,NULL,NULL),(15,17,'padang','078786756',13,1371),(16,18,'veteran 16','123456789012',13,1371);
+insert  into `biodata`(`id_biodata`,`user_id`,`alamat`,`no_hp`,`provinsi_id`,`kota_id`) values (8,5,'cengkeh','79875687',13,1303),(9,11,'padang','968767',13,1371),(10,12,NULL,NULL,NULL,NULL),(11,13,'cengkeh','09876545',13,1371),(12,14,NULL,NULL,NULL,NULL),(13,15,NULL,NULL,NULL,NULL),(14,16,NULL,NULL,NULL,NULL),(15,17,'padang','078786756',13,1371),(16,18,'veteran 16  bc','123456789012',13,1371);
 
 /*Table structure for table `foto_lain_produk` */
 
@@ -78,12 +78,13 @@ CREATE TABLE `keranjang` (
   `lama_penyewaan` int(11) DEFAULT NULL,
   `tanggal_penyewaan` varchar(30) DEFAULT NULL,
   `pengembalian` varchar(25) DEFAULT NULL,
+  `kurir_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_keranjang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `keranjang` */
 
-insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`) values (37,17,'Dikembalikan','2022-08-24 04:23:17','2022-08-24 04:24:59','2022-08-24 04:24:42','1661333082WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-24','2022-08-24 04:25:43'),(38,17,'Dikembalikan','2022-08-25 06:40:32','2022-08-25 06:41:22','2022-08-25 06:40:58','1661384458WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-25','2022-08-25 06:42:00'),(39,17,'Pengiriman','2022-08-25 08:58:28','2022-08-25 08:59:07','2022-08-25 08:58:48','1661392728WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-26',NULL),(40,17,'Dikembalikan','2022-08-25 02:29:57','2022-08-25 02:32:23','2022-08-25 02:30:23','1661412623WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25','2022-08-25 02:40:47'),(41,17,'Lunas','2022-08-25 08:28:47',NULL,'2022-08-25 08:29:32','1661434172WhatsApp Image 2022-07-23 at 18.39.55.jpeg',3,'2022-08-25',NULL),(42,18,'Lunas','2022-08-25 09:08:50',NULL,'2022-08-25 09:09:04','16614365442fdeb4006aa9856a8157123227d1d6a2.jpg',2,'2022-08-25',NULL);
+insert  into `keranjang`(`id_keranjang`,`user_id`,`status`,`tanggal_pesan`,`tanggal_pengiriman`,`tanggal_pembayaran`,`bukti_pembayaran`,`lama_penyewaan`,`tanggal_penyewaan`,`pengembalian`,`kurir_id`) values (37,17,'Dikembalikan','2022-08-24 04:23:17','2022-08-24 04:24:59','2022-08-24 04:24:42','1661333082WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-24','2022-08-24 04:25:43',1),(38,17,'Dikembalikan','2022-08-25 06:40:32','2022-08-25 06:41:22','2022-08-25 06:40:58','1661384458WhatsApp Image 2022-07-23 at 18.39.55.jpeg',2,'2022-08-25','2022-08-25 06:42:00',1),(39,17,'Pengiriman','2022-08-25 08:58:28','2022-08-25 08:59:07','2022-08-25 08:58:48','1661392728WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-26',NULL,1),(40,17,'Dikembalikan','2022-08-25 02:29:57','2022-08-25 02:32:23','2022-08-25 02:30:23','1661412623WhatsApp Image 2022-07-23 at 18.39.55.jpeg',1,'2022-08-25','2022-08-25 02:40:47',1),(41,17,'Lunas','2022-08-25 08:28:47',NULL,'2022-08-25 08:29:32','1661434172WhatsApp Image 2022-07-23 at 18.39.55.jpeg',3,'2022-08-25',NULL,1),(42,18,'Lunas','2022-08-25 09:08:50','2022-08-28 02:26:00','2022-08-25 09:09:04','16614365442fdeb4006aa9856a8157123227d1d6a2.jpg',2,'2022-08-25','2022-08-28 02:30:13',0);
 
 /*Table structure for table `keranjang_produk` */
 
@@ -102,6 +103,20 @@ CREATE TABLE `keranjang_produk` (
 /*Data for the table `keranjang_produk` */
 
 insert  into `keranjang_produk`(`produk_keranjang_id`,`keranjang_id`,`produk_id`,`jumlah`,`harga_keranjang`,`keterangan`) values (51,37,30,2,200000,'happy semprotulation anita\r\nsoon to be S.Kom'),(52,38,30,1,200000,'happy semprotulation\r\nnana\r\nsoon to be S.Pd'),(53,39,30,1,200000,'okujhgfdsa'),(54,40,30,4,200000,'Happy Semprotulaiton\r\naan nabila\r\nsoon to be S.Kom'),(55,41,30,1,200000,''),(56,42,34,2,250000,'eee');
+
+/*Table structure for table `kurir` */
+
+DROP TABLE IF EXISTS `kurir`;
+
+CREATE TABLE `kurir` (
+  `id_kurir` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_kurir` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_kurir`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `kurir` */
+
+insert  into `kurir`(`id_kurir`,`nama_kurir`) values (1,'Kurir 12');
 
 /*Table structure for table `produk` */
 
@@ -123,7 +138,7 @@ CREATE TABLE `produk` (
 
 /*Data for the table `produk` */
 
-insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (29,'papan karangan bunga','<p>RGDTJGYUKUI</p>',40,13,170000,'1661306368lingkaran full bunga.webp','Aktif'),(30,'karangan bunga lingkaran','<p>Happy Semprotulation&nbsp; Ani</p><p>Sonn to be S.Kom</p>',24,13,200000,'1661332814WhatsApp Image 2022-08-19 at 22.24.34 (1).jpeg','Aktif'),(31,'Papan karangan Bunga Persegi','<p>Happy Wedding</p><p>dio &amp; nana</p><p>from UKM Senja</p>',30,14,250000,'1661382373WhatsApp Image 2022-08-19 at 15.51.45.jpeg','Aktif'),(32,'Papan karangan Bunga Persegi','<p>Grand Opening</p><p>Risa Laundry</p>',40,15,170000,'1661382589WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(33,'karangan bunga krans','<p>Turut Berduka Cita</p><p>atas meninggal Bapak M Yusuf&nbsp; S.Pd</p><p><br></p>',35,17,300000,'1661383415krans.jpg','Aktif'),(34,'karangan bunga standing flower','<p>Turut Berduka Cita&nbsp;</p><p>Atas Meninggalnya Ibu Fatma S.kom, M.Kom</p><p>from UKM Mapala</p>',45,18,250000,'1661383708standing flower.jpg','Aktif');
+insert  into `produk`(`id_produk`,`nama_produk`,`deskripsi`,`qty`,`kategori_id`,`harga`,`foto_produk`,`status_produk`) values (29,'papan karangan bunga','<p>RGDTJGYUKUI</p>',40,13,170000,'1661306368lingkaran full bunga.webp','Aktif'),(30,'karangan bunga lingkaran','<p>Happy Semprotulation&nbsp; Ani</p><p>Sonn to be S.Kom</p>',24,13,200000,'1661332814WhatsApp Image 2022-08-19 at 22.24.34 (1).jpeg','Aktif'),(31,'Papan karangan Bunga Persegi','<p>Happy Wedding</p><p>dio &amp; nana</p><p>from UKM Senja</p>',30,14,250000,'1661382373WhatsApp Image 2022-08-19 at 15.51.45.jpeg','Aktif'),(32,'Papan karangan Bunga Persegi','<p>Grand Opening</p><p>Risa Laundry</p>',40,15,170000,'1661382589WhatsApp Image 2022-07-23 at 18.21.26.jpeg','Aktif'),(33,'karangan bunga krans','<p>Turut Berduka Cita</p><p>atas meninggal Bapak M Yusuf&nbsp; S.Pd</p><p><br></p>',35,17,300000,'1661383415krans.jpg','Aktif'),(34,'karangan bunga standing flower','<p>Turut Berduka Cita&nbsp;</p><p>Atas Meninggalnya Ibu Fatma S.kom, M.Kom</p><p>from UKM Mapala</p>',43,18,250000,'1661383708standing flower.jpg','Aktif');
 
 /*Table structure for table `tb_kota_kabupaten` */
 
@@ -156,6 +171,22 @@ CREATE TABLE `tb_provinsi` (
 
 insert  into `tb_provinsi`(`id`,`nama`) values (11,'ACEH'),(12,'SUMATERA UTARA'),(13,'SUMATERA BARAT'),(14,'RIAU'),(15,'JAMBI'),(16,'SUMATERA SELATAN'),(17,'BENGKULU'),(18,'LAMPUNG'),(19,'KEPULAUAN BANGKA BELITUNG'),(21,'KEPULAUAN RIAU'),(31,'DKI JAKARTA'),(32,'JAWA BARAT'),(33,'JAWA TENGAH'),(34,'DI YOGYAKARTA'),(35,'JAWA TIMUR'),(36,'BANTEN'),(51,'BALI'),(52,'NUSA TENGGARA BARAT'),(53,'NUSA TENGGARA TIMUR'),(61,'KALIMANTAN BARAT'),(62,'KALIMANTAN TENGAH'),(63,'KALIMANTAN SELATAN'),(64,'KALIMANTAN TIMUR'),(65,'KALIMANTAN UTARA'),(71,'SULAWESI UTARA'),(72,'SULAWESI TENGAH'),(73,'SULAWESI SELATAN'),(74,'SULAWESI TENGGARA'),(75,'GORONTALO'),(76,'SULAWESI BARAT'),(81,'MALUKU'),(82,'MALUKU UTARA'),(91,'PAPUA BARAT'),(94,'PAPUA');
 
+/*Table structure for table `uang_keluar` */
+
+DROP TABLE IF EXISTS `uang_keluar`;
+
+CREATE TABLE `uang_keluar` (
+  `id_uangkeluar` int(11) NOT NULL AUTO_INCREMENT,
+  `jumlah` double DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `tanggal_keluar` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_uangkeluar`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `uang_keluar` */
+
+insert  into `uang_keluar`(`id_uangkeluar`,`jumlah`,`keterangan`,`tanggal_keluar`) values (1,1000000,'uang keluar beli bahan 2','2022-08-28'),(2,1000000,'bahan 2','2022-08-28');
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
@@ -172,7 +203,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id_user`,`username`,`nama`,`password`,`email`,`role`) values (1,'admin','Admin','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','rohim98@gmail.com','admin'),(2,'rohim@gmail.com','arohim furqan','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','rohim@gmail.com','Customer'),(3,'lovela97famazera@gmail.com','lovela','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','lovela97famazera@gmail.com','Customer'),(5,'anita@gmail.com','anita','$2y$10$CEIpAZKtDcZD4wvkyLAj../Uuu.hxBFDNcO0EkuBNZEU619DC6EY.','anita@gmail.com','Customer'),(7,'pimpinan','Pimpinan','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','pimpinan@gmail.com','pimpinan'),(11,'him1@gmail.com','him','$2y$10$Cw.JWKxqivNL75zX.hLnjOPPkdwg/jdMsQdiRQ51FonojN0Z6gA9i','him1@gmail.com','Customer'),(12,'aoim@gmail.com','aoim','$2y$10$I5rTnXr.zMUK1WgC0ey8GO2I9/aAOSW0qhQfAHLrSHZPFNZrQ7hG.','aoim@gmail.com','Customer'),(13,'aca@gmail.com','aca','$2y$10$SydNTMB2OQB4g0t4izzXgO/ck85uVoWnxiSaOjx5P3R1EzCozG4p.','aca@gmail.com','Customer'),(14,'dona@gmail.com','dona','$2y$10$a1XJDjca/rdzahCex8spQ.UDYfuR5nwaHsgwepmJ14FzpE36oREaS','dona@gmail.com','Customer'),(15,'fit@gmail.com','fit','$2y$10$vXBaszwyYkDh5Dba1ZnYNOzhLkTDf0WtXpY0ME3lLsUI/pXvIzEBS','fit@gmail.com','Customer'),(16,'via@gmail.com','via','$2y$10$XqjVocUWz1WcuKaBdgLp2Ofjn7ZVk766R5iXthGkufzsaLsx7IjIS','via@gmail.com','Customer'),(17,'nanda@gmail.com','nanda','$2y$10$UsX5usuiKVlPoQLg5InRMuAlzNqXdvdsHGtN0KlN6rSy67B.j0eMK','nanda@gmail.com','Customer'),(18,'lovela@gmail.com','lovela','$2y$10$uMzFV6pWgC1kjcaQYnUjWeMYurJaP9TnFbWFz3A.QtH1X1wfCKUb.','lovela@gmail.com','Customer');
+insert  into `users`(`id_user`,`username`,`nama`,`password`,`email`,`role`) values (1,'admin','Admin','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','rohim98@gmail.com','admin'),(2,'rohim@gmail.com','arohim furqan','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','rohim@gmail.com','Customer'),(3,'lovela97famazera@gmail.com','lovela','$2y$10$tJEBb6BNmj1fG6mNquWHie8VhoAIVjjBNr6ent3nLxejwoaP9EoUG','lovela97famazera@gmail.com','Customer'),(5,'anita@gmail.com','anita','$2y$10$CEIpAZKtDcZD4wvkyLAj../Uuu.hxBFDNcO0EkuBNZEU619DC6EY.','anita@gmail.com','Customer'),(7,'pimpinan','Pimpinan','$2y$10$gummw8UZ0MNQ6E9nTmCSve3nB42w7Ds5LB2x39EupK6Xs768pQCEO','pimpinan@gmail.com','pimpinan'),(11,'him1@gmail.com','him','$2y$10$Cw.JWKxqivNL75zX.hLnjOPPkdwg/jdMsQdiRQ51FonojN0Z6gA9i','him1@gmail.com','Customer'),(12,'aoim@gmail.com','aoim','$2y$10$I5rTnXr.zMUK1WgC0ey8GO2I9/aAOSW0qhQfAHLrSHZPFNZrQ7hG.','aoim@gmail.com','Customer'),(13,'aca@gmail.com','aca','$2y$10$SydNTMB2OQB4g0t4izzXgO/ck85uVoWnxiSaOjx5P3R1EzCozG4p.','aca@gmail.com','Customer'),(14,'dona@gmail.com','dona','$2y$10$a1XJDjca/rdzahCex8spQ.UDYfuR5nwaHsgwepmJ14FzpE36oREaS','dona@gmail.com','Customer'),(15,'fit@gmail.com','fit','$2y$10$vXBaszwyYkDh5Dba1ZnYNOzhLkTDf0WtXpY0ME3lLsUI/pXvIzEBS','fit@gmail.com','Customer'),(16,'via@gmail.com','via','$2y$10$XqjVocUWz1WcuKaBdgLp2Ofjn7ZVk766R5iXthGkufzsaLsx7IjIS','via@gmail.com','Customer'),(17,'nanda@gmail.com','nanda','$2y$10$UsX5usuiKVlPoQLg5InRMuAlzNqXdvdsHGtN0KlN6rSy67B.j0eMK','nanda@gmail.com','Customer'),(18,'lovela@gmail.com','lovela famazera','$2y$10$uMzFV6pWgC1kjcaQYnUjWeMYurJaP9TnFbWFz3A.QtH1X1wfCKUb.','lovela@gmail.com','Customer');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -1,3 +1,6 @@
+<?php
+$db = Config\database::connect();
+?>
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -83,8 +86,8 @@
       <div class="card-footer text-muted">
         <?php
         if ($cart2->status == 'Lunas') { ?>
-          <a href="<?= BASE ?>/order/kirim/<?= $cart2->id_keranjang ?>" class="btn btn-success btn-sm">Konfirmasi / Kirim</a>
-
+          <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#modal-default">Konfirmasi / Kirim</button>
+          <a href="<?= BASE ?>/front/bukti/<?= $row->id_keranjang ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">Bukti</a>
           <a href="<?= BASE ?>/order/cancel/<?= $cart2->id_keranjang ?>" class="btn btn-danger btn-sm">Cancel</a>
         <?php } ?>
       </div>
@@ -92,3 +95,38 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="<?= BASE ?>/order/kirim/<?= $cart2->id_keranjang ?>" method="post">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Pilih Kurir</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <select name="kurir" id="" class="form-control" required>
+            <option value="">==PILIH==</option>
+            <?php
+            $kurir = $db->table('kurir')->get()->getResult();
+            foreach ($kurir as $kur) {
+            ?>
+              <option value="<?= $kur->id_kurir ?>"><?= $kur->nama_kurir ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- href="" -->

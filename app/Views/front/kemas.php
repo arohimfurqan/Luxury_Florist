@@ -21,8 +21,8 @@
 											<!--begin: Wizard Body-->
 											<div class="card card-custom card-shadowless rounded-top-0">
 												<div class="card-body p-0">
-													<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-														<div class="col-xl-12 col-xxl-7">
+													<div class="row justify-content-center py-12 px-12 py-lg-15 px-lg-10">
+														<div class="col-xl-12 col-xxl-12">
 															<!--begin: Wizard Form-->
 
 
@@ -45,6 +45,7 @@
 																					<th>Tanggal Pemesanan</th>
 																					<th>Tanggal Pembayaran</th>
 																					<th>Total Bayar</th>
+																					<th></th>
 																					<!-- <th>Actions</th> -->
 																				</tr>
 																			</thead>
@@ -74,6 +75,7 @@
 																						<td class="pt-7 align-middle"><?= $row->tanggal_pembayaran ?></td>
 																						<td class="pt-7 align-middle">Rp. <?= number_format($row->total) ?></td>
 																						<!-- <td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td> -->
+																						<td class="pt-7 align-middle"><a href="<?= BASE ?>/front/bukti/<?= $row->id_keranjang ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">Bukti</a><a href="<?= BASE ?>/uploads/<?= $row->bukti_pembayaran ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-warning">Bukti Transfer</a></td>
 																					</tr>
 																				<?php } ?>
 																			</tbody>

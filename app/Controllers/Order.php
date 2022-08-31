@@ -70,9 +70,10 @@ class Order extends BaseController
 
   public function kirim($id)
   {
+    $kurir =  $this->request->getPost('kurir');
 
 
-    $this->Model_keranjang->update($id, ['status' => 'Pengiriman', 'tanggal_pengiriman' => date('Y-m-d h:i:s')]);
+    $this->Model_keranjang->update($id, ['status' => 'Pengiriman', 'tanggal_pengiriman' => date('Y-m-d h:i:s'), 'kurir_id' => $kurir]);
     $cariproduk = $this->Model_keranjang_produk->where('keranjang_id', $id)->findAll();
     if ($cariproduk) {
       foreach ($cariproduk as $crp) {

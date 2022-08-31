@@ -46,7 +46,7 @@
 																					<th>Tanggal Pembayaran</th>
 																					<th>Tanggal Pengiriman</th>
 																					<th>Total Bayar</th>
-																					<!-- <th>Actions</th> -->
+																					<th></th>
 																				</tr>
 																			</thead>
 																			<tbody>
@@ -76,6 +76,7 @@
 																						<td class="pt-7 align-middle"><?= $row->tanggal_pengiriman ?></td>
 																						<td class="pt-7 align-middle">Rp. <?= number_format($row->total) ?></td>
 																						<!-- <td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td> -->
+																						<td class="pt-7 align-middle"><a href="<?= BASE ?>/front/bukti2/<?= $row->id_keranjang ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">Bukti</a></td>
 																					</tr>
 																				<?php } ?>
 																			</tbody>

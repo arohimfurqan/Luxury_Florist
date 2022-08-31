@@ -79,6 +79,7 @@
                                     <td class="pt-7 align-middle"><?= $row->status ?></td>
 
                                     <!-- <td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td> -->
+                                    <td class="pt-7 align-middle"><a href="<?= BASE ?>/front/bukti2/<?= $row->id_keranjang ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">Bukti</a></td>
                                   </tr>
                                 <?php } ?>
                               </tbody>

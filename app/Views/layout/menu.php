@@ -18,8 +18,8 @@
                      </a>
 
                  </li>
-                 <li class="nav-item <?= $uri->getSegment(1) ==  'kategori' || $uri->getSegment(1) ==  'brand'  ? 'menu-open' : '' ?>">
-                     <a href=" #" class="nav-link <?= $uri->getSegment(1) ==  'kategori' || $uri->getSegment(1) ==  'brand'  ? 'active' : '' ?>">
+                 <li class="nav-item <?= $uri->getSegment(1) ==  'kategori' || $uri->getSegment(1) ==  'kurir' || $uri->getSegment(1) ==  'brand'  ? 'menu-open' : '' ?>">
+                     <a href=" #" class="nav-link <?= $uri->getSegment(1) ==  'kategori' || $uri->getSegment(1) ==  'kurir' || $uri->getSegment(1) ==  'brand'  ? 'active' : '' ?>">
                          <i class="nav-icon fas fa-book"></i>
                          <p>
                              Master
@@ -31,6 +31,12 @@
                              <a href="<?= BASE ?>/kategori/" class="nav-link <?= $uri->getSegment(1) ==  'kategori'  ? 'active' : '' ?>">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Kategori</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= BASE ?>/kurir/" class="nav-link <?= $uri->getSegment(1) ==  'kurir'  ? 'active' : '' ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Kurir</p>
                              </a>
                          </li>
                          <!-- <li class="nav-item">
@@ -50,6 +56,14 @@
                          </p>
                      </a>
 
+                 </li>
+                 <li class="nav-item">
+                     <a href="<?= BASE ?>/uangkeluar" class="nav-link <?= $uri->getSegment(1) ==  'uangkeluar'  ? 'active' : '' ?>">
+                         <i class="nav-icon fas fa-book"></i>
+                         <p>
+                             Uang Keluar
+                         </p>
+                     </a>
                  </li>
                  <li class="nav-item">
                      <a href="<?= BASE ?>/order" class="nav-link <?= $uri->getSegment(1) ==  'order'  ? 'active' : '' ?>">
@@ -106,6 +120,12 @@
                              <a href="<?= BASE ?>/laporan/pengembalian" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'pengembalian'  ? 'active' : '' ?>">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Pengembalian</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= BASE ?>/laporan/uangkeluar" class="nav-link <?= $uri->getSegment(1) ==  'laporan' && $uri->getSegment(2) ==  'keluar'  ? 'active' : '' ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Uang Keluar</p>
                              </a>
                          </li>
                          <li class="nav-item">

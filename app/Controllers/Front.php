@@ -503,6 +503,58 @@ class Front extends BaseController
     } else {
       $cariuserbio2 = $this->Model_user->select('biodata.*,users.*,tb_provinsi.nama as nama_provinsi,tb_kota_kabupaten.nama as nama_kota,tb_provinsi.id as id_provinsi,tb_kota_kabupaten.id as id_kota')->join('biodata', 'user_id=id_user')->join('tb_provinsi', 'provinsi_id=tb_provinsi.id')->join('tb_kota_kabupaten', 'kota_id=tb_kota_kabupaten.id')->where('id_user', session('id2'))->first();
     }
+
+    if ($this->request->getMethod() === 'post') {
+      $nama = $this->request->getPost('nama');
+      $email = $this->request->getPost('email');
+      $nohp = $this->request->getPost('nohp');
+      $provinsi = $this->request->getPost('provinsi');
+      $kota = $this->request->getPost('kota');
+      $alamat = $this->request->getPost('alamat');
+      $password_baru = $this->request->getPost('password_baru');
+
+      if ($password_baru) {
+        $datauser = [
+          'nama' => $nama,
+          'username' => $email,
+          'email' => $email,
+          'password' => password_hash($password_baru, PASSWORD_DEFAULT),
+        ];
+        $biodata = [
+          'alamat' => $alamat,
+          'no_hp' => $nohp,
+          'provinsi_id' => $provinsi,
+          'kota_id' => $kota,
+        ];
+      } else {
+        $datauser = [
+          'nama' => $nama,
+          'username' => $email,
+          'email' => $email,
+        ];
+        $biodata = [
+          'alamat' => $alamat,
+          'no_hp' => $nohp,
+          'provinsi_id' => $provinsi,
+          'kota_id' => $kota,
+        ];
+      }
+      $caribiodatas = $this->Model_biodata->where('user_id', session('id2'))->first();
+      $this->Model_biodata->update($caribiodatas->id_biodata, $biodata);
+
+      if ($this->Model_user->skipValidation(true)->update(session('id2'), $datauser)) {
+        echo ("<script>
+      window.alert('Berhasil merubah data');
+      window.history.back();
+      </script>");
+      } else {
+        echo ("<script>
+        window.alert('Gagal merubah data');
+        window.history.back();
+        </script>");
+      }
+    }
+
     $data = ['biodata' => $cariuserbio2];
     $template = [
 
@@ -511,5 +563,19 @@ class Front extends BaseController
     ];
 
     return view('layout/front/main', $template);
+  }
+
+  public function bukti($id)
+  {
+    $cart = $this->Model_keranjang->join('users', 'id_user=user_id')->where('id_keranjang', $id)->findAll();
+    $dt = ['cart' => $cart,];
+    return view('front/bukti', $dt);
+  }
+
+  public function bukti2($id)
+  {
+    $cart = $this->Model_keranjang->join('users', 'id_user=user_id')->join('kurir', 'id_kurir=kurir_id')->where('id_keranjang', $id)->findAll();
+    $dt = ['cart' => $cart,];
+    return view('front/bukti2', $dt);
   }
 }

@@ -24,7 +24,7 @@
           </div>
         </div>
         </div> -->
-      <form class="form" action="<?= BASE ?>/front/profile">
+      <form class="form" action="<?= BASE ?>/front/profil" method="POST">
 
 
         <div class="d-flex flex-row">
@@ -78,13 +78,13 @@
                 <div class="form-group row">
                   <label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
                   <div class="col-lg-9 col-xl-6">
-                    <input class="form-control form-control-lg form-control-solid" type="text" value="<?= $biodata->nama ?>" />
+                    <input class="form-control form-control-lg form-control-solid" type="text" value="<?= $biodata->nama ?>" name="nama" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-xl-3 col-lg-3 col-form-label">Email</label>
                   <div class="col-lg-9 col-xl-6">
-                    <input class="form-control form-control-lg form-control-solid" type="text" value="<?= $biodata->email ?>" />
+                    <input class="form-control form-control-lg form-control-solid" type="email" value="<?= $biodata->email ?>" name="email" />
                     <!-- <span class="form-text text-muted">Email untuk </span> -->
 
                   </div>
@@ -92,7 +92,7 @@
                 <div class="form-group row">
                   <label class="col-xl-3 col-lg-3 col-form-label">Nohp</label>
                   <div class="col-lg-9 col-xl-6">
-                    <input class="form-control form-control-lg form-control-solid" type="text" value="<?= $biodata->no_hp ?>" />
+                    <input class="form-control form-control-lg form-control-solid" type="text" value="<?= $biodata->no_hp ?>" name="nohp" />
 
                   </div>
                 </div>
@@ -137,7 +137,7 @@
                 <div class="form-group row">
                   <label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
                   <div class="col-lg-9 col-xl-6">
-                    <textarea class="form-control form-control-lg form-control-solid" value="Loop Inc." rows="10"><?= $biodata->alamat ?> </textarea>
+                    <textarea class="form-control form-control-lg form-control-solid" rows="10" name="alamat"><?= $biodata->alamat ?></textarea>
 
                   </div>
                 </div>

@@ -9,6 +9,7 @@ use App\Models\M_biodata;
 use App\Models\M_keranjang;
 use App\Models\M_keranjang_produk;
 use App\Models\M_produk;
+use App\Models\M_uangkeluar;
 use App\Models\M_user;
 
 class Laporan extends BaseController
@@ -17,6 +18,7 @@ class Laporan extends BaseController
   protected $Model_produk;
   protected $Model_biodata;
   protected $Model_keranjang;
+  protected $Model_uangkeluar;
   protected $Model_keranjang_produk;
   protected $Model_user;
   protected $validation;
@@ -28,6 +30,7 @@ class Laporan extends BaseController
     $this->Model_user = new M_user();
     $this->Model_biodata = new M_biodata();
     $this->Model_keranjang = new M_keranjang();
+    $this->Model_uangkeluar = new M_uangkeluar();
     $this->Model_keranjang_produk = new M_keranjang_produk();
     $this->validation =  \Config\Services::validation();
     $this->db = \Config\database::connect();
@@ -60,7 +63,7 @@ class Laporan extends BaseController
     if ($this->request->getMethod() === 'post') {
       $tahun =  $this->request->getPost('tahun');
 
-      $cart = $this->Model_keranjang->like('tanggal_pesan', $tahun)->where('status', 'Lunas')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->like('tanggal_pesan', $tahun)->where('status', 'Lunas')->findall();
 
       // print_r($cart);
       // die;
@@ -94,7 +97,7 @@ class Laporan extends BaseController
       $tanggal2 =  $this->request->getPost('akhir');
       $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
-      $cart = $this->Model_keranjang->where('tanggal_pesan >=', $tanggalawal . ' 00:00:00')->where('tanggal_pesan <=', $tanggalakhir . ' 00:00:00')->where('status', 'Lunas')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->where('tanggal_pesan >=', $tanggalawal . ' 00:00:00')->where('tanggal_pesan <=', $tanggalakhir . ' 23:59:59')->where('status', 'Lunas')->findall();
 
 
       $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
@@ -112,7 +115,7 @@ class Laporan extends BaseController
       $tanggal2 =  $this->request->getPost('akhir');
       $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
-      $cart = $this->Model_keranjang->where('tanggal_pengiriman >=', $tanggalawal . ' 00:00:00')->where('tanggal_pengiriman <=', $tanggalakhir . ' 00:00:00')->where('status', 'Pengiriman')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->where('tanggal_pengiriman >=', $tanggalawal . ' 00:00:00')->where('tanggal_pengiriman <=', $tanggalakhir . ' 23:59:59')->where('status', 'Pengiriman')->findall();
 
 
       $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
@@ -134,7 +137,7 @@ class Laporan extends BaseController
     if ($this->request->getMethod() === 'post') {
       $tahun =  $this->request->getPost('tahun');
 
-      $cart = $this->Model_keranjang->like('tanggal_pesan', $tahun)->where('status', 'Pengiriman')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->like('tanggal_pesan', $tahun)->where('status', 'Pengiriman')->findall();
 
       // print_r($cart);
       // die;
@@ -397,7 +400,7 @@ class Laporan extends BaseController
     if ($this->request->getMethod() === 'post') {
       $tahun =  $this->request->getPost('tahun');
 
-      $cart = $this->Model_keranjang->like('pengembalian', $tahun)->where('status', 'Dikembalikan')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->like('pengembalian', $tahun)->where('status', 'Dikembalikan')->findall();
 
 
       $dt = ['cart' => $cart, 'tahun' => $tahun];
@@ -422,7 +425,7 @@ class Laporan extends BaseController
       $tanggal2 =  $this->request->getPost('akhir');
       $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
-      $cart = $this->Model_keranjang->where('pengembalian >=', $tanggalawal . ' 00:00:00')->where('pengembalian <=', $tanggalakhir . ' 00:00:00')->where('status', 'Dikembalikan')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->join('biodata', 'id_user=biodata.user_id')->where('pengembalian >=', $tanggalawal . ' 00:00:00')->where('pengembalian <=', $tanggalakhir . ' 23:59:59')->where('status', 'Dikembalikan')->findall();
 
 
       $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
@@ -447,7 +450,7 @@ class Laporan extends BaseController
     if ($this->request->getMethod() === 'post') {
       $tahun =  $this->request->getPost('tahun');
 
-      $cart = $this->Model_keranjang->like('tanggal_pembayaran', $tahun)->where('status', 'Dikembalikan')->orwhere('status', 'Lunas')->orwhere('status', 'Pengiriman')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->orWhereIn('status', ['Dikembalikan', 'Lunas', 'Pengiriman'])->like('tanggal_pembayaran', $tahun)->findall();
 
 
       $dt = ['cart' => $cart, 'tahun' => $tahun];
@@ -470,12 +473,55 @@ class Laporan extends BaseController
       $tanggal2 =  $this->request->getPost('akhir');
       $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
-      $cart = $this->Model_keranjang->where('tanggal_pembayaran >=', $tanggalawal . ' 00:00:00')->where('tanggal_pembayaran <=', $tanggalakhir . ' 00:00:00')->where('status', 'Dikembalikan')->orwhere('status', 'Lunas')->orwhere('status', 'Pengiriman')->findall();
+      $cart = $this->Model_keranjang->join('keranjang_produk', 'keranjang_id=id_keranjang')->join('produk', 'produk_id=id_produk')->join('users', 'id_user=user_id')->orWhereIn('status', ['Dikembalikan', 'Lunas', 'Pengiriman'])->where('tanggal_pembayaran >=', $tanggalawal . ' 00:00:00')->where('tanggal_pembayaran <=', $tanggalakhir . ' 23:59:59')->findall();
 
 
       $dt = ['cart' => $cart, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
 
       return view('laporan/L_uangmasuk_periode', $dt);
+    }
+  }
+
+
+  public function uangkeluar()
+  {
+    $data = [
+      'uangkeluar' =>  $this->Model_uangkeluar->findAll()
+    ];
+
+    if ($this->request->getMethod() === 'post') {
+      $tahun =  $this->request->getPost('tahun');
+
+      $uangkeluar = $this->Model_uangkeluar->like('tanggal_keluar', $tahun)->findall();
+
+
+      $dt = ['uangkeluar' => $uangkeluar, 'tahun' => $tahun];
+
+      return view('laporan/L_uangkeluar', $dt);
+    }
+
+    $template = [
+      'isi' => view('laporan/F_uangkeluar', $data)
+    ];
+    return view('layout/main', $template);
+  }
+
+
+  public function uangkeluar_periode()
+  {
+
+    if ($this->request->getMethod() === 'post') {
+      $tanggal1 =  $this->request->getPost('awal');
+      $tanggalawal = date("Y-m-d", strtotime($tanggal1));
+      $tanggal2 =  $this->request->getPost('akhir');
+      $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
+
+      $uangkeluar = $this->Model_uangkeluar->where('tanggal_keluar >=', $tanggalawal . ' 00:00:00')->where('tanggal_keluar <=', $tanggalakhir . ' 23:59:59')->findall();
+
+
+      $dt = ['uangkeluar' => $uangkeluar, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];
+
+      return view('laporan/L_uangkeluar_periode', $dt);
     }
   }
 }

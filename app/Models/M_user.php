@@ -22,7 +22,7 @@ class M_user extends Model
     'username' => 'required|is_unique[users.username]',
     'password' => 'required|is_unique[users.password]',
     'email' => 'required|is_unique[users.email]',
-    'role' => 'required',
+    // 'role' => 'required',
   ];
   protected $validationMessages = [
     // 'nama_brand' => ['required' => 'nama kategri efkne']
