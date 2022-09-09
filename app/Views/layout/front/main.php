@@ -369,10 +369,10 @@ $db = Config\database::connect();
 
 
 
-            $countbelumbayar = $db->table('keranjang')->where('status', 'Menunggu Pembayaran')->where('user_id', session('id2'))->countAllResults();
+            $countbelumbayar = $db->table('keranjang')->whereIn('status', ['Menunggu Pembayaran', 'Menunggu Konfirmasi'])->where('user_id', session('id2'))->countAllResults();
             ?>
             <div class="navi-text">
-              <div class="font-weight-bold">Belum Bayar </div>
+              <div class="font-weight-bold">Belum/Sudah Bayar </div>
               <div class="text-muted">Oder Belum Bayar
                 <span class="label label-light-danger label-inline font-weight-bold"><?= $countbelumbayar ?></span>
               </div>

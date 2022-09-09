@@ -22,7 +22,7 @@
 											<div class="card card-custom card-shadowless rounded-top-0">
 												<div class="card-body p-0">
 													<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-														<div class="col-xl-12 col-xxl-7">
+														<div class="col-xl-12 col-xxl-12">
 															<!--begin: Wizard Form-->
 
 
@@ -33,7 +33,7 @@
 																<div class="separator separator-dashed my-5"></div>
 																<!--end::Section-->
 																<!--begin::Section-->
-																<h6 class="font-weight-bolder mb-3">Belum Bayar :</h6>
+																<h6 class="font-weight-bolder mb-3">Belum/Sudah Bayar :</h6>
 																<div class="text-dark-50 line-height-lg">
 																	<div class="table-responsive">
 																		<table class="table">
@@ -44,6 +44,7 @@
 																					<th>Qty</th>
 																					<th>Tanggal Pemesanan</th>
 																					<th>Total Bayar</th>
+																					<th>Status</th>
 																					<th>Actions</th>
 																				</tr>
 																			</thead>
@@ -71,7 +72,14 @@
 																						<td><?= $row->jumlah ?></td>
 																						<td><?= $row->tanggal_pesan ?></td>
 																						<td>Rp. <?= number_format($row->total) ?></td>
-																						<td><a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a></td>
+																						<td><?= $row->status ?></td>
+																						<td>
+																							<?php
+																							if ($row->status == 'Menunggu Pembayaran') {
+																							?>
+																								<a href="<?= BASE ?>/front/bayar/<?= $row->id_keranjang ?>" class="btn btn-success">Bayar</a>
+																							<?php } ?>
+																						</td>
 																					</tr>
 																				<?php } ?>
 																			</tbody>

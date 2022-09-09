@@ -379,7 +379,7 @@ class Front extends BaseController
 
   public function belum_bayar()
   {
-    $caribelumbayar = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->where('user_id', session('id2'))->where('status', 'Menunggu Pembayaran')->groupBy('id_keranjang')->findAll();
+    $caribelumbayar = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->where('user_id', session('id2'))->whereIn('status', ['Menunggu Pembayaran', 'Menunggu Konfirmasi'])->groupBy('id_keranjang')->findAll();
     // print_r($caribelumbayar);
     // die;
     $data = ['data' => $caribelumbayar];
@@ -409,11 +409,11 @@ class Front extends BaseController
       $fotoutama = $this->request->getFile('bukti');
       $foto1 = time() . $fotoutama->getClientName();
 
-      $this->Model_keranjang->update($this->request->getPost('id_keranjang'), ['status' => 'Lunas', 'tanggal_pembayaran' => date('Y-m-d h:i:s'), 'bukti_pembayaran' => $foto1]);
+      $this->Model_keranjang->update($this->request->getPost('id_keranjang'), ['status' => 'Menunggu Konfirmasi', 'tanggal_pembayaran' => date('Y-m-d h:i:s'), 'bukti_pembayaran' => $foto1]);
 
       $fotoutama->move('uploads', $foto1);
 
-      return redirect()->to('front/kemas');
+      return redirect()->to('front/belum_bayar');
     }
     // print_r($cariuserbio2);
     // die;

@@ -35,7 +35,7 @@ class Order extends BaseController
 
   public function index()
   {
-    $cariorder = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*,users.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->join('users', 'user_id=id_user')->where('status', 'Lunas')->groupBy('id_keranjang')->findAll();
+    $cariorder = $this->Model_keranjang->select('keranjang.*,keranjang_produk.*,produk.*,users.*, SUM(jumlah * harga_keranjang) AS total')->join('keranjang_produk', 'id_keranjang=keranjang_id')->join('produk', 'id_produk=produk_id')->join('users', 'user_id=id_user')->whereIn('status', ['Lunas', 'Menunggu Konfirmasi'])->groupBy('id_keranjang')->findAll();
     // print_r($cariorder);
     // die;
     $data = ['data' => $cariorder];
@@ -84,6 +84,16 @@ class Order extends BaseController
         }
       }
     }
+    return  redirect()->back();
+  }
+
+  public function konfirmasi($id)
+  {
+
+
+
+    $this->Model_keranjang->update($id, ['status' => 'Lunas']);
+
     return  redirect()->back();
   }
 }

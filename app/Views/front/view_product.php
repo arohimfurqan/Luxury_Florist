@@ -85,7 +85,7 @@
                           <div class="mb-8 d-flex flex-column">
                             <span class="text-dark font-weight-bold mb-4">Sold Items</span>
                             <?php
-                            $sold = $db->table('keranjang_produk')->join('keranjang', 'keranjang_id=id_keranjang')->where('status', 'Pengiriman')->orWhere('status', 'Dikembalikan')->where('produk_id', $produk->id_produk)->get()->getResult();
+                            $sold = $db->table('keranjang_produk')->join('keranjang', 'keranjang_id=id_keranjang')->orWhereIn('status', ['Dikembalikan', 'Pengiriman'])->where('produk_id', $produk->id_produk)->get()->getResult();
                             $jm = 0;
                             foreach ($sold as $s) {
                               @$jm = @$jm + $s->jumlah;

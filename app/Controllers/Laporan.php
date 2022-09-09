@@ -516,7 +516,7 @@ class Laporan extends BaseController
       $tanggal2 =  $this->request->getPost('akhir');
       $tanggalakhir = date("Y-m-d", strtotime($tanggal2));
 
-      $uangkeluar = $this->Model_uangkeluar->where('tanggal_keluar >=', $tanggalawal . ' 00:00:00')->where('tanggal_keluar <=', $tanggalakhir . ' 23:59:59')->findall();
+      $uangkeluar = $this->Model_uangkeluar->where('tanggal_keluar >=', $tanggalawal)->where('tanggal_keluar <=', $tanggalakhir)->findall();
 
 
       $dt = ['uangkeluar' => $uangkeluar, 'awal' => $tanggalawal, 'akhir' => $tanggalakhir];

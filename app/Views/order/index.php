@@ -20,6 +20,7 @@
               <th>Tanggal Pemesanan</th>
               <th>Tanggal Pembayaran</th>
               <th>Total Bayar</th>
+              <th>Status</th>
               <th></th>
             </tr>
           </thead>
@@ -45,6 +46,7 @@
                 <td><?= $row->tanggal_pesan ?></td>
                 <td><?= $row->tanggal_pembayaran ?></td>
                 <td>Rp. <?= number_format($row->total) ?></td>
+                <td><?= $row->status ?></td>
                 <td><a href="<?= BASE ?>/order/detail/<?= $row->id_keranjang ?>" class="btn btn-success">Detail</a></td>
               </tr>
             <?php endforeach ?>

@@ -78,6 +78,8 @@
                   <th class=" font-weight-bold text-muted text-uppercase">Tanggal Order</th>
                   <th class=" font-weight-bold text-muted text-uppercase">Ordered</th>
                   <th class=" font-weight-bold text-muted text-uppercase">Qty</th>
+                  <th class=" font-weight-bold text-muted text-uppercase">Tgl Kirim</th>
+                  <th class=" font-weight-bold text-muted text-uppercase">Tgl Kembali</th>
                   <th class=" font-weight-bold text-muted text-uppercase">Harga</th>
                   <th class=" font-weight-bold text-muted text-uppercase">Total</th>
 
@@ -99,6 +101,8 @@
                     <td class="pt-7 align-middle"><?= $row->no_hp ?></td>
                     <td class="pt-7 align-middle"><?= $row->tanggal_pesan ?></td>
                     <td class="pt-7 align-middle"><?= $row->nama_produk ?></td>
+                    <td class="pt-7 align-middle"><?= $row->tanggal_pengiriman ?></td>
+                    <td class="pt-7 align-middle"><?= $row->pengembalian ?></td>
                     <td class="pt-7 align-middle"><?= $row->jumlah ?></td>
                     <td class="pt-7 align-middle">Rp. <?= number_format($row->harga) ?></td>
                     <td class="pt-7 align-middle">Rp. <?= number_format($row->harga * $row->jumlah) ?></td>

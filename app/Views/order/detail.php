@@ -85,8 +85,20 @@ $db = Config\database::connect();
       </div>
       <div class="card-footer text-muted">
         <?php
-        if ($cart2->status == 'Lunas') { ?>
-          <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#modal-default">Konfirmasi / Kirim</button>
+        $sekarang = date("Y-m-d");
+        if ($cart2->status == 'Lunas') {
+          if ($cart2->tanggal_penyewaan <= $sekarang) {
+        ?>
+
+            <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#modal-default">Kirim</button>
+          <?php
+
+          }
+        } else if ($cart2->status == 'Menunggu Konfirmasi') { ?>
+          <a class="btn btn-success btn-sm" href="<?= BASE ?>/order/konfirmasi/<?= $cart2->id_keranjang ?>">Konfirmasi Pembayaran</a>
+        <?php  }
+        if ($cart2->status == 'Lunas' || $cart2->status == 'Menunggu Konfirmasi') { ?>
+
           <a href="<?= BASE ?>/front/bukti/<?= $row->id_keranjang ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">Bukti</a>
           <a href="<?= BASE ?>/order/cancel/<?= $cart2->id_keranjang ?>" class="btn btn-danger btn-sm">Cancel</a>
         <?php } ?>
